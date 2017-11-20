@@ -19,9 +19,11 @@ COPY menu.xml /root/.config/openbox/
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh
 
+COPY docker-compose.yml /
+
 # Set entrypoint script
 ENTRYPOINT /usr/local/bin/main.sh
 
 LABEL "com.databiology.dbe.executable.type" "compose"
-LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:0.0.1"]'
+LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:0.0.2"]'
 LABEL "com.databiology.dbe.executable.service.expose" '{"service":"igv", "port":6080, "protocol":"http", "path":"", "proxy_type": "pathstrip"}'

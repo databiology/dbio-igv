@@ -26,5 +26,3 @@ $IGVDIR/igv.sh
 
 # this loop is required to execute the app
 while true; do sleep 100; done
-
-
