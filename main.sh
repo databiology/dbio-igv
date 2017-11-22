@@ -19,8 +19,6 @@ if [ "$DIEVER" != "0.1" ]; then
     echo "WARNING: Version of ingestion engine equals not 0.1"
 fi
 
-cd $SCRATCH
-
 # launch app
 $IGVDIR/igv.sh
 

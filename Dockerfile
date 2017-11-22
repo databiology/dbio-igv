@@ -13,17 +13,21 @@ RUN mkdir -p /opt/databiology/apps && cd /opt/databiology/apps && \
     wget http://data.broadinstitute.org/igv/projects/downloads/2.4/IGV_2.4.4.zip && \
     unzip IGV_2.4.4.zip && mv IGV_2.4.4 IGV && rm IGV_2.4.4.zip
 
+COPY rc.xml /root/.config/openbox/
 COPY menu.xml /root/.config/openbox/
 
 # Store the scripts in the container
+COPY igv.sh /opt/databiology/apps/IGV/igv.sh
+RUN chmod +x /opt/databiology/apps/IGV/igv.sh
+
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh
-
-COPY docker-compose.yml /
 
 # Set entrypoint script
 ENTRYPOINT /usr/local/bin/main.sh
 
+COPY docker-compose.yml /
+
 LABEL "com.databiology.dbe.executable.type" "compose"
-LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:0.0.2"]'
+LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:0.0.3"]'
 LABEL "com.databiology.dbe.executable.service.expose" '{"service":"igv", "port":6080, "protocol":"http", "path":"", "proxy_type": "pathstrip"}'
