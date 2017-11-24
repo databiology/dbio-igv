@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Entrypoint for igv application
 # Felipe Leza <felipe.leza@databiology.com>
 # Databiology @ 2017
@@ -24,7 +23,3 @@ $IGVDIR/igv.sh
 
 # this loop is required to execute the app
 while true; do sleep 100; done
-
-
-
-
