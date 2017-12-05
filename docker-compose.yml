@@ -1,13 +1,14 @@
 version: '2'
 services:
   igv:
-    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.0
+    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.1
     networks:
       - ${DBE_WORKUNIT_NETWORK}
     ports:
       - "6080"
     volumes:
       - ${DBE_WORKUNIT_SCRATCH}:/scratch
+      - /genomes/public_genomes:/genomes/public_genomes:ro
     environment:
       - affinity:container==${DBE_INGESTION_CONTAINERID}
     labels:
