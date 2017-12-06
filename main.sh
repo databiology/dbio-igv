@@ -17,7 +17,7 @@ else
     useradd -s /bin/bash -p "${DBE_WORKUNIT_USER_SHADOW}" -d /scratch/ ${DBE_WORKUNIT_USERNAME}
 fi
 
-chown -R ${DBE_WORKUNIT_USERNAME} /scratch
+chown -hR ${DBE_WORKUNIT_USERNAME} /scratch
 
 # launch novnc server
 Xvfb :1 -screen 0 1600x900x16 &
