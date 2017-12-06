@@ -17,7 +17,7 @@ else
     useradd -s /bin/bash -p "${DBE_WORKUNIT_USER_SHADOW}" -d /scratch/ ${DBE_WORKUNIT_USERNAME}
 fi
 
-chown -hR ${DBE_WORKUNIT_USERNAME} /scratch
+chown ${DBE_WORKUNIT_USERNAME} /scratch
 
 # launch novnc server
 Xvfb :1 -screen 0 1600x900x16 &
@@ -46,6 +46,11 @@ gosu ${DBE_WORKUNIT_USERNAME} $IGVDIR/igv.sh &
 
 child=$!
 wait "$child"
+
+
+while true; do
+    sleep 100
+done
 
 echo "IGV stopped"
 echo "-----"

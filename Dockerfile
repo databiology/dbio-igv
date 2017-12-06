@@ -28,5 +28,5 @@ ENTRYPOINT /usr/local/bin/main.sh
 COPY docker-compose.yml /
 
 LABEL "com.databiology.dbe.executable.type" "compose"
-LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:1.0.3"]'
+LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:1.0.4"]'
 LABEL "com.databiology.dbe.executable.service.expose" '{"service":"igv", "port":6080, "protocol":"http", "path":"", "proxy_type": "pathstrip"}'
