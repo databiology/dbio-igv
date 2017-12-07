@@ -1,4 +1,4 @@
-FROM app/dbio/desktop:1.0.4
+FROM app/dbio/desktop:1.0.5
 
 MAINTAINER Felipe Leza <felipe.leza@databiology.com>
 
@@ -11,7 +11,7 @@ RUN apt-get update -q=2 && \
 
 RUN mkdir -p /opt/databiology/apps && cd /opt/databiology/apps && \
     wget -q http://data.broadinstitute.org/igv/projects/downloads/2.4/IGV_2.4.4.zip && \
-    unzip IGV_2.4.4.zip && mv IGV_2.4.4 IGV && rm IGV_2.4.4.zip
+    unzip IGV_2.4.4.zip && rm IGV_2.4.4.zip && mv -f IGV_2.4.4 IGV
 
 COPY menu.xml /scratch/.config/openbox/menu.xml
 
@@ -28,5 +28,5 @@ ENTRYPOINT /usr/local/bin/main.sh
 COPY docker-compose.yml /
 
 LABEL "com.databiology.dbe.executable.type" "compose"
-LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:1.0.4"]'
+LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:1.0.5"]'
 LABEL "com.databiology.dbe.executable.service.expose" '{"service":"igv", "port":6080, "protocol":"http", "path":"", "proxy_type": "pathstrip"}'

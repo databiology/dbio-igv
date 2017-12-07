@@ -1,7 +1,7 @@
 version: '2'
 services:
   igv:
-    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.4
+    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.5
     networks:
       - ${DBE_WORKUNIT_NETWORK}
     ports:
