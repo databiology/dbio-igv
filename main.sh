@@ -6,7 +6,7 @@
 set -euo pipefail
 
 SCRATCH=/scratch
-IGVDIR=/opt/databiology/apps/IGV/
+IGVDIR=/opt/databiology/apps/IGV
 
 DIEVER=$(cat < $SCRATCH/ingestion.json | jq -r '.version')
 if [ "$DIEVER" != "0.1" ]; then
@@ -14,7 +14,7 @@ if [ "$DIEVER" != "0.1" ]; then
 fi
 
 # launch novnc server
-/usr/local/bin/start-novnc.sh
+/usr/local/bin/start-novnc.sh > /dev/null 2>&1
 
 # launch app with gosu command
 gosu ${DBE_WORKUNIT_USERNAME} $IGVDIR/igv.sh &
@@ -24,3 +24,4 @@ wait "$child"
 
 echo "IGV stopped"
 echo "-----"
+

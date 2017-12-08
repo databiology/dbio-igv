@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #This script is intended for launch on *nix machines
 
