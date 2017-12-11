@@ -1,7 +1,7 @@
 version: '2'
 services:
   igv:
-    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.6
+    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.7
     networks:
       - ${DBE_WORKUNIT_NETWORK}
     ports:
@@ -13,8 +13,6 @@ services:
     - affinity:container==${DBE_INGESTION_CONTAINERID}
     - DBE_SYSTEM_USERID=${DBE_SYSTEM_USERID}
     - DBE_SYSTEM_GROUPID=${DBE_SYSTEM_GROUPID}
-    - DBE_INGESTION_INTERFACE=${DBE_INGESTION_INTERFACE}
-    - DBE_INGESTION_HOST=${DBE_INGESTION_INTERFACE}
     - DBE_WORKUNIT_USERNAME=${DBE_WORKUNIT_USERNAME}
     - DBE_WORKUNIT_USER_SHADOW=${DBE_WORKUNIT_USER_SHADOW}
     labels:
