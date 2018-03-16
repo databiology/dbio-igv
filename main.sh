@@ -11,8 +11,7 @@ chown dbe:dbe \
     /scratch \
     /scratch/results \
     /scratch/reports \
-    /scratch/logs \
-    /scratch/work
+    /scratch/logs
 
 # launch novnc server
 /usr/local/bin/start-novnc.sh
