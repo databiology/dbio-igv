@@ -11,7 +11,7 @@ IGVDIR=/opt/databiology/apps/IGV
 /usr/local/bin/start-novnc.sh > /dev/null 2>&1
 
 # launch app with gosu command
-gosu "${DBE_WORKUNIT_USERNAME}" $IGVDIR/igv.sh &
+gosu dbe $IGVDIR/igv.sh &
 
 child=$!
 wait "$child"
