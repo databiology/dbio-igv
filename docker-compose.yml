@@ -1,7 +1,7 @@
 version: '2'
 services:
   igv:
-    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.11
+    image: ${DBE_DOCKER_REPO}/app/dbio/igv:1.0.12
     networks:
       - ${DBE_WORKUNIT_NETWORK}
     ports:
@@ -11,9 +11,5 @@ services:
       - /genomes/public_genomes:/genomes/public_genomes:ro
     environment:
     - affinity:container==${DBE_INGESTION_CONTAINERID}
-    - DBE_SYSTEM_USERID=${DBE_SYSTEM_USERID}
-    - DBE_SYSTEM_GROUPID=${DBE_SYSTEM_GROUPID}
-    - DBE_WORKUNIT_USERNAME=${DBE_WORKUNIT_USERNAME}
-    - DBE_WORKUNIT_USER_SHADOW=${DBE_WORKUNIT_USER_SHADOW}
     labels:
       - com.databiology.dbe.workunit.network.public=yes
