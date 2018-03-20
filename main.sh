@@ -5,24 +5,22 @@
 
 set -euo pipefail
 
+SCRATCH=/scratch
+REPORTDIR=$SCRATCH/reports
+RESULTDIR=$SCRATCH/results
+LOGSDIR=$SCRATCH/logs
 IGVDIR=/opt/databiology/apps/IGV
 
-chown dbe:dbe \
-    /scratch \
-    /scratch/results \
-    /scratch/reports \
-    /scratch/logs
+chown dbe:dbe $SCRATCH $REPORTDIR $RESULTDIR $LOGSDIR
 
 # launch novnc server
-/usr/local/bin/start-novnc.sh
+/usr/local/bin/start-novnc.sh > /dev/null 2>&1
 
 # launch app with gosu command
 gosu dbe $IGVDIR/igv.sh &
 
 child=$!
 wait "$child"
-
-rm -rf /tmp/.X1-lock
 
 echo "IGV stopped"
 echo "-----"
