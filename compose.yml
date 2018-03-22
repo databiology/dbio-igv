@@ -1,0 +1,7 @@
+version: '3'
+services:
+  main:
+    networks:
+      - uplink
+    ports:
+      - "6080"

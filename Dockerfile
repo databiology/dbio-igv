@@ -1,4 +1,4 @@
-FROM app/dbio/desktop:1.1.0
+FROM app/dbio/desktop:1.1.1
 
 MAINTAINER Felipe Leza <felipe.leza@databiology.com>
 
@@ -22,9 +22,3 @@ RUN chmod +x /usr/local/bin/main.sh
 
 # Set entrypoint script
 ENTRYPOINT /usr/local/bin/main.sh
-
-COPY docker-compose.yml /
-
-LABEL "com.databiology.dbe.executable.type" "compose"
-LABEL "com.databiology.dbe.executable.images" '["/app/dbio/igv:1.1.0"]'
-LABEL "com.databiology.dbe.executable.service.expose" '{"service":"igv", "port":6080, "protocol":"http", "path":"", "proxy_type": "pathstrip"}'
