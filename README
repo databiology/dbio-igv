@@ -65,9 +65,6 @@ IGV accepts the following file formats:
 
 ^__IMPORTANT NOTE:__
 *You have to save result files in /scratch/results path.
-*To terminate the IGV app:
-## You first go to the IGV Menu Bar and then click Exit.
-## The second step is double-click on the "Terminate Workunit" icon.
 ^
 
 
