@@ -11,7 +11,7 @@ RESULTDIR=$SCRATCH/results
 LOGSDIR=$SCRATCH/logs
 IGVDIR=/opt/databiology/apps/IGV
 
-chown dbe:dbe $SCRATCH $REPORTDIR $RESULTDIR $LOGSDIR
+#chown dbe:dbe $SCRATCH $REPORTDIR $RESULTDIR $LOGSDIR
 
 # launch novnc server
 /usr/local/bin/start-novnc.sh > /dev/null 2>&1
