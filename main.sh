@@ -5,18 +5,13 @@
 
 set -euo pipefail
 
-SCRATCH=/scratch
-REPORTDIR=$SCRATCH/reports
-RESULTDIR=$SCRATCH/results
-LOGSDIR=$SCRATCH/logs
 IGVDIR=/opt/databiology/apps/IGV
-
 
 # launch novnc server
 /usr/local/bin/start-novnc.sh > /dev/null 2>&1
 
-# launch app with gosu command
-gosu dbe $IGVDIR/igv.sh &
+# launch app
+$IGVDIR/igv.sh &
 
 child=$!
 wait "$child"

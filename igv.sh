@@ -9,8 +9,9 @@ PREFIX=$(dirname "$(readlink "$0" || echo "$0")")
 exec java "$MEMORY" \
 -XX:+IgnoreUnrecognizedVMOptions \
     --illegal-access=permit --add-modules=java.xml.bind \
-	-Dapple.laf.useScreenMenuBar=true \
-	-Djava.net.preferIPv4Stack=true \
-	-jar "$PREFIX"/igv.jar "$@"
+    -Dapple.laf.useScreenMenuBar=true \
+    -Djava.net.preferIPv4Stack=true \
+    -Duser.home=/scratch \
+    -jar "$PREFIX"/igv.jar "$@"
 
 
