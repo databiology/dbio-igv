@@ -5,7 +5,7 @@
 *2.4.4
 
 !!Databiology Application Version
-*1.1.4
+*1.2.0
 
 !!Description
 The Integrative Genomics Viewer (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.
@@ -77,6 +77,7 @@ IGV accepts the following file formats:
 
 !!Application Changelog
 ||Version|Release Notes
+1.2.0|Update to CIAO5
 1.1.4|Home directory update
 1.0.7|Initial version||
 
