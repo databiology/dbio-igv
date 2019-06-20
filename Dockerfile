@@ -1,6 +1,4 @@
-FROM app/dbio/desktop:1.1.1
-
-MAINTAINER Felipe Leza <felipe.leza@databiology.com>
+FROM app/dbio/desktop:1.4.0
 
 RUN apt-get update -q=2 && \
     apt-get install -q=2 --no-install-recommends \
@@ -20,5 +18,4 @@ RUN chmod +x /opt/databiology/apps/IGV/igv.sh
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh
 
-# Set entrypoint script
-ENTRYPOINT /usr/local/bin/main.sh
+EXPOSE 6080
