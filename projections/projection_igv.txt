@@ -1,0 +1,5 @@
+resources (validate: "name match '*.bam' OR name match '*.bai' OR name match '*.sam' OR name match '*.cram' OR name match '*.bed' OR name match '*.bigBed' OR name match '*.bigWig' OR name match '*.fa' OR name match '*.fasta' OR name match '*.fas' OR name match '*.fna' OR name match '*.fasta.gz' OR name match '*.fa.gz'  OR name match '*.fa.bz2' OR name match '*.fasta.bz2' OR name match '*.vcf' OR name match '*.gtf' OR name match '*.gtf.gz' OR name match '*.gtf.bz2' OR name match '*.gff3' OR name match '*.gff3.gz' OR name match '*.gff3.bz2' ") {
+    id
+    name
+    relativePath
+}
