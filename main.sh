@@ -16,6 +16,13 @@ $IGVDIR/igv.sh &
 child=$!
 wait "$child"
 
+if find "/scratch/restults" -mindepth 1 -print -quit 2>/dev/null | grep -q .; then
+    echo "Results directory not empty."
+else
+    touch /scratch/restults/IGV.txt
+    echo -e "IGV log file\nNo output was generated\nAuto generated file" >> /scratch/restults/IGV.log
+fi
+
 echo "IGV stopped"
 echo "-----"
 
