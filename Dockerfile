@@ -15,6 +15,8 @@ RUN cd /opt/databiology/apps && \
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
 RUN chmod +x /opt/databiology/apps/IGV/igv.sh
+COPY no_output.sh /opt/databiology
+RUN chmod +x /opt/databiology/no_output.sh
 
 # terminate workunit if user click on logout button
 RUN mkdir -p /home/dbe/.config/lxpanel/LXDE && \
