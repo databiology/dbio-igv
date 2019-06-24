@@ -7,9 +7,6 @@ set -euo pipefail
 
 IGVDIR=/opt/databiology/apps/IGV
 
-# launch novnc server
-/usr/local/bin/start-novnc.sh > /dev/null 2>&1
-
 # launch app
 $IGVDIR/igv.sh &
 
