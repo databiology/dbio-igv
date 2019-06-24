@@ -2,7 +2,8 @@ FROM app/dbio/desktop:1.4.0
 
 RUN apt-get update -q=2 && \
     apt-get install -q=2 --no-install-recommends \
-    default-jre bzip2 && \
+    openjdk-8-jre \
+    bzip2 && \
     apt-get clean && \
     apt-get purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
