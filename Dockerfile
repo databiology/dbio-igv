@@ -16,6 +16,13 @@ RUN cd /opt/databiology/apps && \
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
 RUN chmod +x /opt/databiology/apps/IGV/igv.sh
 
+# terminate workunit if user click on logout button
+RUN mkdir -p /home/dbe/.config/lxpanel/LXDE && \
+echo '\n\
+[Command]\n\
+Logout=/opt/databiology/no_output.sh \n\
+' > /home/dbe/.config/lxpanel/LXDE/config
+
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh
 
