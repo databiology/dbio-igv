@@ -8,7 +8,7 @@ set -euo pipefail
 IGVDIR=/opt/databiology/apps/IGV
 
 # launch app
-$IGVDIR/igv.sh &
+gosu dbe $IGVDIR/igv.sh &
 
 child=$!
 wait "$child"
