@@ -1,4 +1,4 @@
-FROM app/dbio/desktop:1.4.0
+FROM app/dbio/desktop:1.4.1
 
 RUN apt-get update -q=2 && \
     apt-get install -q=2 --no-install-recommends \
