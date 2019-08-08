@@ -1,11 +1,21 @@
 #!/bin/bash
 # Entrypoint for igv application
 # Felipe Leza <felipe.leza@databiology.com>
-# Databiology @ 2017
+# Databiology @ 2019
 
 set -euo pipefail
 
 IGVDIR=/opt/databiology/apps/IGV
+SCRATCH=/scratch
+SOURCEDIR=${SCRATCH}/input
+INPUTRESOURCES=${SCRATCH}/inputresources
+
+# create the bai file for all input files in SOURCEDIR 
+while read -r FILE; do
+	echo "*** creating index file for $FILE" 
+	echo "samtools index ${FILE}"
+    samtools index "${FILE}" || echo "Error creating index file"
+done < <(find $SOURCEDIR $INPUTRESOURCES -name "*.bam" )
 
 # launch app
 gosu dbe $IGVDIR/igv.sh &
