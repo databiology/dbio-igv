@@ -3,19 +3,21 @@
 
 !!Version
 ||__Program version__|2.4.4
-__Databiology Application Version__|1.3.1||
+__Databiology Application Version__|1.3.3||
 !!+Deploying
-If you want to ((Deprecated: Pulling and Pushing Application Images|deploy)) the latest version of this app, this is the pull you should do:
+If you want to ((Operations: Deploying an Application|deploy)) the latest version of this app, this is the pull you should do:
 {CODE(colors="Shell" wrap=0)}
-$ docker pull repo.lab.databiology.net/app/dbio/igv:1.3.1
+$ docker pull repo.lab.databiology.net/app/dbio/igv:1.3.3
 {CODE}
 If you want to deploy a previous version, the pull should be:
 {CODE(colors="Shell" wrap=0)}
 $ docker pull repo.lab.databiology.net/app/dbio/igv:<version>
 {CODE}
-Just replace <version> with the ''Databiology Application Version'' you're interested in.
+Just replace <version> with the ''Databiology Application Version'' you're interested in. For full deployment instructions, please see ((Operations: Deploying an Application)).
 !!Application Changelog
 ||Version|Release Notes
+1.3.3|Adding igvtools and indexing input BAM files
+1.3.2|New Wallpaper
 1.3.1|Use Desktop 1.4.0, Generate file if no output was created: now a workunit won’t be wrongly marked as ''failed'' if the user didn’t save or generate any other output before terminating it.
 1.2.0|Update to CIAO5
 1.1.4|Home directory update
@@ -83,6 +85,10 @@ IGV accepts the following file formats:
 ^__IMPORTANT NOTE:__
 *You have to save result files in /scratch/results path.
 *After a period of inactivity IGV logout, so you should refresh the page.
+*The [http://software.broadinstitute.org/software/igv/igvtools|igvtools ]utility provides a set of tools for pre-processing data files and it is accessed by selecting Tools>Run igvtools.
+*The index files must have the same base file name and must reside in the same directory as the file that it indexes.
+*IGV requires that both SAM and BAM files be sorted by position and indexed.
+*SAM files can be sorted and indexed using igvtools. Note: The .SAI index is an IGV format, and it does not work with samtools or any other application.
 ^
 
 ---
