@@ -10,4 +10,5 @@ ABOUT:
                     integrated genomic datasets. It supports a wide variety of 
                     data types, including array-based and next-generation sequence
                     data, and genomic annotations."
+    LICENSE:        "MIT License"
 
