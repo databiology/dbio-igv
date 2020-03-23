@@ -3,11 +3,11 @@
 
 !!Version
 ||__Program version__|2.4.4
-__Databiology Application Version__|1.3.3||
+__Databiology Application Version__|1.3.5||
 !!+Deploying
 If you want to ((Operations: Deploying an Application|deploy)) the latest version of this app, this is the pull you should do:
 {CODE(colors="Shell" wrap=0)}
-$ docker pull repo.lab.databiology.net/app/dbio/igv:1.3.3
+$ docker pull repo.lab.databiology.net/app/dbio/igv:1.3.5
 {CODE}
 If you want to deploy a previous version, the pull should be:
 {CODE(colors="Shell" wrap=0)}
@@ -16,6 +16,8 @@ $ docker pull repo.lab.databiology.net/app/dbio/igv:<version>
 Just replace <version> with the ''Databiology Application Version'' you're interested in. For full deployment instructions, please see ((Operations: Deploying an Application)).
 !!Application Changelog
 ||Version|Release Notes
+1.3.5|Add file check for no_output.sh
+1.3.4|Add license
 1.3.3|Adding igvtools and indexing input BAM files
 1.3.2|New Wallpaper
 1.3.1|Use Desktop 1.4.0, Generate file if no output was created: now a workunit won’t be wrongly marked as ''failed'' if the user didn’t save or generate any other output before terminating it.
