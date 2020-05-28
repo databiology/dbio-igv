@@ -17,6 +17,15 @@ while read -r FILE; do
     samtools index "${FILE}" || echo "Error creating index file"
 done < <(find $SOURCEDIR $INPUTRESOURCES -name "*.bam" )
 
+while read -r FILE; do
+	echo "*** creating index file for $FILE" 
+    gunzip -c "${FILE}" | vcf-sort | grep -v "FAIL" > "${FILE}.sort"
+    bgzip "${FILE}.sort"
+    rm "${FILE}"
+    mv "${FILE}.sort.gz" "${FILE}"
+    tabix "${FILE}"
+done < <(find $SOURCEDIR $INPUTRESOURCES -name "*.vcf.gz" )
+
 # launch app
 gosu dbe $IGVDIR/igv.sh &
 

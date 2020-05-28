@@ -42,3 +42,11 @@ COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh
 
 EXPOSE 6080
+
+RUN apt-get update -q=2 && \
+    apt-get install -q=2 --no-install-recommends \
+    vcftools \
+    tabix && \
+    apt-get clean && \
+    apt-get purge && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
