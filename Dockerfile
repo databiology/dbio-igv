@@ -1,4 +1,4 @@
-FROM app/dbio/desktop:1.4.1
+FROM dbio/desktop:1.4.6
 
 RUN apt-get update -q=2 && \
     apt-get install -q=2 --no-install-recommends \
@@ -28,15 +28,15 @@ RUN /opt/databiology/apps/miniconda3/bin/conda create -q  -c biobuilds -n databi
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
 RUN chmod +x /opt/databiology/apps/IGV/igv.sh
-COPY no_output.sh /opt/databiology
-RUN chmod +x /opt/databiology/no_output.sh
+#COPY no_output.sh /opt/databiology
+#RUN chmod +x /opt/databiology/no_output.sh
 
-# terminate workunit if user click on logout button
-RUN mkdir -p /home/dbe/.config/lxpanel/LXDE && \
-echo '\n\
-[Command]\n\
-Logout=/opt/databiology/no_output.sh \n\
-' > /home/dbe/.config/lxpanel/LXDE/config
+# # terminate workunit if user click on logout button
+# RUN mkdir -p /home/dbe/.config/lxpanel/LXDE && \
+# echo '\n\
+# [Command]\n\
+# Logout=/opt/databiology/no_output.sh \n\
+# ' > /home/dbe/.config/lxpanel/LXDE/config
 
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh

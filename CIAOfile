@@ -2,7 +2,7 @@ CIAO: 5
 
 ABOUT:
 
-    NAME       :    app/dbio/igv
+    NAME       :    dbio/igv
     LABEL      :    "IGV"
     AUTHOR     :    felipe.leza@databiology.com
     DESCRIPTION:    "The Integrative Genomics Viewer (IGV) is a high-performance
@@ -12,3 +12,7 @@ ABOUT:
                     data, and genomic annotations."
     LICENSE:        "MIT License"
 
+
+
+REQUIREMENTS:
+    - UPLINK
