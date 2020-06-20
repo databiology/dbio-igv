@@ -2,20 +2,21 @@
 -==-
 
 !!Version
-||__Program version__|2.4.4
-__Databiology Application Version__|1.3.5||
+||__Program version__|2.8.4
+__Databiology Application Version__|2.0.0||
 !!+Deploying
 If you want to ((Operations: Deploying an Application|deploy)) the latest version of this app, this is the pull you should do:
 {CODE(colors="Shell" wrap=0)}
-$ docker pull repo.lab.databiology.net/app/dbio/igv:1.3.5
+$ docker pull repo.lab.databiology.net/dbio/igv:2.0.0
 {CODE}
 If you want to deploy a previous version, the pull should be:
 {CODE(colors="Shell" wrap=0)}
-$ docker pull repo.lab.databiology.net/app/dbio/igv:<version>
+$ docker pull repo.lab.databiology.net/dbio/igv:<VERSION>
 {CODE}
-Just replace <version> with the ''Databiology Application Version'' you're interested in. For full deployment instructions, please see ((Operations: Deploying an Application)).
+Just replace <VERSION> with the ''Databiology Application Version'' you're interested in. For full deployment instructions, please see ((Operations: Deploying an Application)).
 !!Application Changelog
 ||Version|Release Notes
+2.0.0|Update IGV version from 2.6.2 to 2.8.4, base image, namespace migration
 1.3.5|Add file check for no_output.sh
 1.3.4|Add license
 1.3.3|Adding igvtools and indexing input BAM files
@@ -28,11 +29,10 @@ Just replace <version> with the ''Databiology Application Version'' you're inter
 !!Description
 The Integrative Genomics Viewer (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.
 
-!!!Terminate the WorkUnit
+!!!Terminate the Workunit
 To finish the WU correctly, close the window or go to the bottom menu click on the Desktop icon -> click Logout. {img fileId="1263" imalign=center vspace="40" height="80%" width="80%"}
 ---
 !!Supported architectures
-*ppc64le
 *x86_64
 ---
 !!Input files
@@ -99,10 +99,10 @@ IGV accepts the following file formats:
 ---
 
 !!External link
-[http://software.broadinstitute.org/software/igv|Homepage]
+[http://software.broadinstitute.org/software/igv |Homepage]
 ---
 Go back to ((Analysis Applications|Analysis Applications)) or to the ((Home Page|Home Page))
-{HTML()}<!-- Start of databiology Zendesk Widget script -->
+ {HTML()}<!-- This is where Zendesk widget used to start -->
 <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="databiology.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
 /*]]>*/</script>
 <!-- End of databiology Zendesk Widget script -->{HTML}
