@@ -13,8 +13,9 @@ RUN apt-get update -q=2 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /opt/databiology/apps && \
-    wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_2.8.4.zip && \
-    unzip IGV_2.6.2.zip && rm IGV_2.6.2.zip && mv -f IGV_2.6.2 IGV
+    IGV_VERSION=2.8.4 && \
+    wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_${IGV_VERSION}.zip && \
+    unzip IGV_${IGV_VERSION}.zip && rm IGV_${IGV_VERSION}.zip && mv -f IGV_${IGV_VERSION} IGV
 
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
