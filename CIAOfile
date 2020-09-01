@@ -33,7 +33,7 @@ PARAMETERS:
         TYPE:        TEXT
         KEY:         region
         LABEL:       "Position"
-        VALUE:       "chr1:39553037"
+        VALUE:       "chr1:39553036-39553038"
         MODIFIABLE:  True
         REQUIRED:    False
         DESCRIPTION: "Predefine the region to load"
