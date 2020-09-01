@@ -21,6 +21,8 @@ RUN cd /opt/databiology/apps && \
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
 RUN chmod +x /opt/databiology/apps/IGV/igv.sh
+COPY loader.sh /opt/databiology/apps/IGV/loader.sh
+RUN chmod +x /opt/databiology/apps/IGV/loader.sh
 
 COPY main.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/main.sh

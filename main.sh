@@ -55,14 +55,12 @@ then
     echo "exit" >> "$LOADER"
 fi
 
+gosu dbe $IGVDIR/loader.sh &
+
 # launch app
 gosu dbe $IGVDIR/igv.sh &
 child=$!
 
-# preload data
-sh "$LOADER" | telnet 127.0.0.1 60151
-
-# wait main taks before finishing
 wait "$child"
 
 echo "IGV stopped"

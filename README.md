@@ -6,19 +6,19 @@
  | | |
 ---|---
 __Program version__|2.8.4
-__Databiology Application Version__|2.0.1
+__Databiology Application Version__|2.1.0
 
 ## Deploying
 
 If you want to deploy the latest version of this app, this is the pull you should do:
 
-     docker pull hub.databiology.net/dbio/igv:2.0.1
+     docker pull hub.databiology.net/dbio/igv:2.1.0
 
 If you want to deploy a previous version, the pull should be:
 
      docker pull hub.databiology.net/dbio/igv:{VERSION}
 
-Just replace {VERSION} with the Version you're interested in. For full deployment instructions, please see [our in-depth guide on application deployment](https://docs.databiology.net/tiki-index.php?page=Operations%3ADeploying+an+Application).
+Just replace {VERSION} with the Version you are interested in. For full deployment instructions, please see [our in-depth guide on application deployment](https://docs.databiology.net/tiki-index.php?page=Operations%3ADeploying+an+Application).
 
 
 ## Description

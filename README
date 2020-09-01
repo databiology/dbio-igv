@@ -3,11 +3,11 @@
 
 !!Version
 ||__Program version__|2.8.4
-__Databiology Application Version__|2.0.1||
+__Databiology Application Version__|2.1.0||
 
 !!Application Changelog
 ||Version|Release Notes
-2.0.1|Automatic loading of input files (BAM/VCF), snapshot mode added
+2.1.0|Automatic loading of input files (BAM/VCF), snapshot mode added
 2.0.0|Update IGV version from 2.6.2 to 2.8.4, base image, namespace migration
 1.3.5|Add file check for no_output.sh
 1.3.4|Add license
