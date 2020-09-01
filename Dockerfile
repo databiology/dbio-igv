@@ -4,6 +4,7 @@ RUN apt-get update -q=2 && \
     apt-get upgrade -q=2 && \
     apt-get install -q=2 --no-install-recommends \
         telnet \
+        parallel \
         openjdk-11-jre \
         vcftools \
         samtools \
@@ -20,12 +21,18 @@ RUN cd /opt/databiology/apps && \
 
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
-RUN chmod +x /opt/databiology/apps/IGV/igv.sh
+RUN chmod a+x /opt/databiology/apps/IGV/igv.sh
 COPY loader.sh /opt/databiology/apps/IGV/loader.sh
-RUN chmod +x /opt/databiology/apps/IGV/loader.sh
+RUN chmod a+x /opt/databiology/apps/IGV/loader.sh
+COPY index_bam.sh /usr/local/bin/index_bam.sh
+RUN chmod a+x /usr/local/bin/index_bam.sh
+COPY index_vcf.sh /usr/local/bin/index_vcf.sh
+RUN chmod a+x /usr/local/bin/index_vcf.sh
+COPY VCFindex.sh /usr/local/bin/VCFindex.sh
+RUN chmod a+x /usr/local/bin/VCFindex.sh
 
 COPY main.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/main.sh
+RUN chmod a+x /usr/local/bin/main.sh
 
 EXPOSE 6080
 

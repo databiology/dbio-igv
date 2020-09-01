@@ -18,36 +18,126 @@ echo "" > "$LOADER"
 GENOME=$(jq -r '.["APPLICATION"] .genome' "$SCRATCH/parameters.json")
 REGION=$(jq -r '.["APPLICATION"] .region' "$SCRATCH/parameters.json")
 SNAPSHOT=$(jq -r '.["APPLICATION"] .snapshot' "$SCRATCH/parameters.json")
+PRELOAD=$(jq -r '.["APPLICATION"] .preload' "$SCRATCH/parameters.json")
 
 if [[ "$GENOME" != "null" ]]; then echo "echo 'genome $GENOME'" >> "$LOADER"; fi
 
 # create the bai file for all input files in INPUTRESOURCES 
-while read -r FILE; do
-    if [ -e "$FILE.bai" ]; then
-        echo "*** detected index $FILE.bai"
+/usr/local/bin/index_bam.sh &
+while true
+do 
+    if [ -e "/tmp/index_bam.done" ]
+    then
+        break
     else
-	    echo "*** creating index file for $FILE" 
-	    echo "samtools index ${FILE}"
-        samtools index "${FILE}" || echo "Error creating index file"
+        sleep 10
     fi
-    echo "echo 'load $FILE'" >> "$LOADER"
-done < <(find $INPUTRESOURCES -name "*.bam" )
+done
 
-while read -r FILE; do
-    if [ -e "$FILE.tbi" ]; then
-        echo "*** detected index file $FILE.tbi"
+/usr/local/bin/index_vcf.sh &
+while true
+do 
+    if [ -e "/tmp/index_vcf.done" ]
+    then
+        break
     else
-        echo "*** creating index file for $FILE" 
-        gunzip -c "${FILE}" | vcf-sort | grep -v "FAIL" > "${FILE}.sort"
-        bgzip "${FILE}.sort"
-        rm "${FILE}"
-        mv "${FILE}.sort.gz" "${FILE}"
-        tabix "${FILE}"
+        sleep 10
     fi
-    echo "echo 'load $FILE'" >> "$LOADER"
-done < <(find $INPUTRESOURCES -name "*.vcf.gz" )
+done
+
+if [[ "$PRELOAD" == "true" ]]
+then
+    PATT=""
+    if [[ "$REGION" != "null" ]]
+    then
+        CHR=$(echo "$REGION" | cut -f1 -d":")
+        case "$CHR" in
+            chr1)
+                PATT=22101
+                ;;
+            chr2)
+                PATT=22102
+                ;;
+            chr3)
+                PATT=22103
+                ;;
+            chr4)
+                PATT=22104
+                ;;
+            chr5)
+                PATT=22105
+                ;;
+            chr6)
+                PATT=22106
+                ;;
+            chr7)
+                PATT=22107
+                ;;
+            chr8)
+                PATT=22108
+                ;;
+            chr9)
+                PATT=22109
+                ;;
+            chr10)
+                PATT=22110
+                ;;
+            chr11)
+                PATT=22111
+                ;;
+            chr12)
+                PATT=22112
+                ;;
+            chr13)
+                PATT=22113
+                ;;
+            chr14)
+                PATT=22114
+                ;;
+            chr15)
+                PATT=22115
+                ;;
+            chr16)
+                PATT=22116
+                ;;
+            chr17)
+                PATT=22117
+                ;;
+            chr18)
+                PATT=22118
+                ;;
+            chr19)
+                PATT=22119
+                ;;
+            chr20)
+                PATT=22120
+                ;;
+            chr21)
+                PATT=22121
+                ;;
+            chr22)
+                PATT=22122
+                ;;
+            chrX)
+                PATT=22123
+                ;;
+            chrY)
+                PATT=22124
+                ;;
+            *)
+                echo "Chromosome $CHR is not recognized, please use chr[1..22XY]"
+                exit 1
+            ;;
+        esac
+    fi
+    for FILE in "$INPUTRESOURCES"/*$PATT*.vcf.gz "$INPUTRESOURCES"/*.bam 
+    do
+        echo "echo 'load $FILE'" >> "$LOADER"
+    done
+fi
 
 if [[ "$REGION" != "null" ]]; then echo "echo 'goto $REGION'" >> "$LOADER"; fi
+
 if [[ "$SNAPSHOT" == "true" ]]
 then
     echo "snapshotDirectory $RESULTDIR" >> "$LOADER"
@@ -55,7 +145,10 @@ then
     echo "exit" >> "$LOADER"
 fi
 
-gosu dbe $IGVDIR/loader.sh &
+if [[ "$PRELOAD" == "true" ]]
+then
+    gosu dbe $IGVDIR/loader.sh &
+fi
 
 # launch app
 gosu dbe $IGVDIR/igv.sh &

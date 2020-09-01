@@ -33,7 +33,7 @@ PARAMETERS:
         TYPE:        TEXT
         KEY:         region
         LABEL:       "Position"
-        VALUE:       "chr1:120000-1201000"
+        VALUE:       "chr1:39553037"
         MODIFIABLE:  True
         REQUIRED:    False
         DESCRIPTION: "Predefine the region to load"
@@ -46,3 +46,11 @@ PARAMETERS:
         VALUE:       False
         MODIFIABLE:  True
         DESCRIPTION: "If set, IGV will take a screenshot of the region and exit (no interactive mode)"
+
+    -
+        TYPE:        SWITCH
+        KEY:         preload
+        LABEL:       "Preload data"
+        VALUE:       True
+        MODIFIABLE:  True
+        DESCRIPTION: "If set, IGV will preload all VCF or BAM passed as input"
