@@ -13,7 +13,10 @@ while read -r FILE; do
     fi
 done < <(find $INPUTRESOURCES -name "*.bam" )
 
-cat "$LIST" | parallel -j$NP samtools index {}
+if [ -e "$LIST" ]
+then
+    cat "$LIST" | parallel -j$NP samtools index {}
+    echo "*** all BAI index created"
+done
 
-echo "*** all BAI index created"
 touch /tmp/index_bam.done

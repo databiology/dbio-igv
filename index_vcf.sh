@@ -4,8 +4,6 @@ INPUTRESOURCES=/scratch/inputresources
 NP=$(nproc)
 LIST=/tmp/vcf.list
 
-
-
 while read -r FILE; do
     if [ -e "$FILE.tbi" ]; then
         echo "*** detected index file $FILE.tbi"
@@ -15,7 +13,9 @@ while read -r FILE; do
     fi
 done < <(find $INPUTRESOURCES -name "*.vcf.gz" )
 
-cat "$LIST" | parallel -j$NP VCFindex.sh {}
-
-echo "*** all TBI index created"
+if [ -e "$LIST" ]
+then
+    cat "$LIST" | parallel -j$NP VCFindex.sh {}
+    echo "*** all TBI index created"
+fi
 touch /tmp/index_vcf.done
