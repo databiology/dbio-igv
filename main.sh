@@ -1,14 +1,14 @@
 #!/bin/bash
-# Entrypoint for igv application
+# Entrypoint for IGV application
 # Felipe Leza <felipe.leza@databiology.com>
-# Databiology @ 2020
+# (C) 2020 Databiology
 
 set -euo pipefail
 
 IGVDIR=/opt/databiology/apps/IGV
 SCRATCH=/scratch
-SOURCEDIR=${SCRATCH}/input
-RESULTDIR==${SCRATCH}/results
+#SOURCEDIR=${SCRATCH}/input
+RESULTDIR=${SCRATCH}/results
 INPUTRESOURCES=${SCRATCH}/inputresources
 LOADER="$SCRATCH/loader.sh"
 
@@ -53,11 +53,16 @@ then
     echo "snapshotDirectory $RESULTDIR" >> "$LOADER"
     echo "snapshot" >> "$LOADER"
     echo "exit" >> "$LOADER"
+fi
 
 # launch app
 gosu dbe $IGVDIR/igv.sh &
-
 child=$!
+
+# preload data
+sh "$LOADER" | telnet 127.0.0.1 60151
+
+# wait main taks before finishing
 wait "$child"
 
 echo "IGV stopped"
