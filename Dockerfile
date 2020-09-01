@@ -3,6 +3,7 @@ FROM dbio/desktop:2.0.1
 RUN apt-get update -q=2 && \
     apt-get upgrade -q=2 && \
     apt-get install -q=2 --no-install-recommends \
+        telnet
         openjdk-11-jre \
         vcftools \
         samtools \

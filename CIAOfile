@@ -16,3 +16,33 @@ ABOUT:
 
 REQUIREMENTS:
     - UPLINK
+
+
+PARAMETERS:
+
+    -
+        TYPE:        TEXT
+        KEY:         genome
+        LABEL:       "Genome"
+        VALUE:       "hg19"
+        MODIFIABLE:  True
+        REQUIRED:    False
+        DESCRIPTION: "Predefine the genome to load"
+
+    -
+        TYPE:        TEXT
+        KEY:         region
+        LABEL:       "Position"
+        VALUE:       "chr1:120000-1201000"
+        MODIFIABLE:  True
+        REQUIRED:    False
+        DESCRIPTION: "Predefine the region to load"
+
+
+    -
+        TYPE:        SWITCH
+        KEY:         snapshot
+        LABEL:       "Take screenshot"
+        VALUE:       False
+        MODIFIABLE:  True
+        DESCRIPTION: "If set, IGV will take a screenshot of the region and exit (no interactive mode)"

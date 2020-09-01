@@ -26,3 +26,4 @@ exec java -showversion --module-path="${prefix}/lib" "$MEMORY" \
     --module=org.igv/org.broad.igv.ui.Main "$@"
 
 
+sh /scratch/loader.sh | telnet 127.0.0.1 60151
