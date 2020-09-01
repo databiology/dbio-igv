@@ -17,6 +17,6 @@ if [ -e "$LIST" ]
 then
     cat "$LIST" | parallel -j$NP samtools index {}
     echo "*** all BAI index created"
-done
+fi
 
 touch /tmp/index_bam.done

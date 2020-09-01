@@ -132,7 +132,10 @@ then
     fi
     for FILE in "$INPUTRESOURCES"/*$PATT*.vcf.gz "$INPUTRESOURCES"/*.bam 
     do
-        echo "echo 'load $FILE'" >> "$LOADER"
+        if [ -e "$FILE" ]
+        then
+            echo "echo 'load $FILE'" >> "$LOADER"
+        fi
     done
 fi
 
