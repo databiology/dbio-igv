@@ -18,7 +18,8 @@ RUN cd /opt/databiology/apps && \
     wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_${IGV_VERSION}.zip && \
     unzip IGV_${IGV_VERSION}.zip && \
     rm IGV_${IGV_VERSION}.zip && \
-    mv -f IGV_${IGV_VERSION} IGV
+    mv -f IGV_${IGV_VERSION} IGV && \
+    chmod a+x IGV/jdk-11/bin/*
 
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
