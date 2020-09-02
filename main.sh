@@ -12,7 +12,7 @@ RESULTDIR=${SCRATCH}/results
 INPUTRESOURCES=${SCRATCH}/inputresources
 LOADER="$SCRATCH/loader.sh"
 
-echo "" > "$LOADER"
+echo "echo new" > "$LOADER"
 
 # Read parameters from parameters.json
 GENOME=$(jq -r '.["APPLICATION"] .genome' "$SCRATCH/parameters.json")
@@ -135,6 +135,7 @@ then
         if [ -e "$FILE" ]
         then
             echo "echo 'load $FILE'" >> "$LOADER"
+            echo "sleep 2"           >> "$LOADER"
         fi
     done
 fi
