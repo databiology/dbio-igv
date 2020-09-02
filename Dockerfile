@@ -15,10 +15,10 @@ RUN apt-get update -q=2 && \
 
 RUN cd /opt/databiology/apps && \
     IGV_VERSION=2.8.9 && \
-    wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_${IGV_VERSION}.zip && \
-    unzip IGV_${IGV_VERSION}.zip && \
-    rm IGV_${IGV_VERSION}.zip && \
-    mv -f IGV_${IGV_VERSION} IGV && \
+    wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_Linux_${IGV_VERSION}.zip && \
+    unzip IGV_Linux_${IGV_VERSION}.zip && \
+    rm IGV_Linux_${IGV_VERSION}.zip && \
+    mv -f IGV_Linux_${IGV_VERSION} IGV && \
     chmod a+x IGV/jdk-11/bin/*
 
 # Store the scripts in the container
