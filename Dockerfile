@@ -5,7 +5,6 @@ RUN apt-get update -q=2 && \
     apt-get install -q=2 --no-install-recommends \
         telnet \
         parallel \
-        openjdk-11-jre \
         vcftools \
         samtools \
         tabix \
@@ -15,9 +14,11 @@ RUN apt-get update -q=2 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /opt/databiology/apps && \
-    IGV_VERSION=2.8.4 && \
+    IGV_VERSION=2.8.9 && \
     wget -q https://data.broadinstitute.org/igv/projects/downloads/2.8/IGV_${IGV_VERSION}.zip && \
-    unzip IGV_${IGV_VERSION}.zip && rm IGV_${IGV_VERSION}.zip && mv -f IGV_${IGV_VERSION} IGV
+    unzip IGV_${IGV_VERSION}.zip && \
+    rm IGV_${IGV_VERSION}.zip && \
+    mv -f IGV_${IGV_VERSION} IGV
 
 # Store the scripts in the container
 COPY igv.sh /opt/databiology/apps/IGV/igv.sh
