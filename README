@@ -4,14 +4,15 @@
 {maketoc title="" levels="2,3"}
 
 !!Version
-||__Program Version__|2.8.4
-__Databiology Application Version__|2.1.5||
+||__Program Version__|2.8.9
+__Databiology Application Version__|2.1.6||
 
 !!+Deploying
 If you want to ((Operations: Deploying an Application|deploy)) the latest version of this application, please refer to [https://hub.databiology.net/harbor/projects/3/repositories/igv|Databiology Hub]
 
 !!Application Changelog
 ||__Version__|__Release notes__
+2.1.6|Update IGV version from 2.8.4 to 2.8.9
 2.1.5|Update documentation
 2.1.4|Linux versions for IGV
 2.1.3|java permissions

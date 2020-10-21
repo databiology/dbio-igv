@@ -2,15 +2,15 @@
 
 ## Version
 
-__Program Version__: 2.8.4
+__Program Version__: 2.8.9
 
-__Databiology Application Version__: 2.1.5
+__Databiology Application Version__: 2.1.6
 
 ## Deploying
 
 If you want to deploy the latest version of this image, the first step is to do a pull:
 
-     docker pull hub.databiology.net/dbio/igv:2.1.5
+     docker pull hub.databiology.net/dbio/igv:2.1.6
 
 If you want to deploy a previous version, the pull should be:
 
