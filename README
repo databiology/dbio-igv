@@ -1,31 +1,68 @@
 !IGV
 -==-
 
+{maketoc title="" levels="2,3"}
+
 !!Version
-||__Program version__|2.8.4
-__Databiology Application Version__|2.1.0||
+||__Program Version__|2.8.4
+__Databiology Application Version__|2.1.5||
+
+!!+Deploying
+If you want to ((Operations: Deploying an Application|deploy)) the latest version of this application, please refer to [https://hub.databiology.net/harbor/projects/3/repositories/igv|Databiology Hub]
 
 !!Application Changelog
-||Version|Release Notes
-2.1.0|Automatic loading of input files (BAM/VCF), snapshot mode added
+||__Version__|__Release notes__
+2.1.5|Update documentation
+2.1.4|Linux versions for IGV
+2.1.3|java permissions
+2.1.2|using igv java
+2.1.1|more time before loading
+2.1.0|default coord
+2.0.1|updating documentation
 2.0.0|Update IGV version from 2.6.2 to 2.8.4, base image, namespace migration
-1.3.5|Add file check for no_output.sh
-1.3.4|Add license
-1.3.3|Adding igvtools and indexing input BAM files
-1.3.2|New Wallpaper
-1.3.1|Use Desktop 1.4.0, Generate file if no output was created: now a workunit won’t be wrongly marked as ''failed'' if the user didn’t save or generate any other output before terminating it.
-1.2.0|Update to CIAO5
-1.1.4|Home directory update
-1.0.7|Initial version||
+1.3.6|adding automatic index
+1.3.5|Fix no_output.sh
+1.3.4|add license
+1.3.3|creating index for bam files
+1.3.2|desktop v1.4.1, new wallpaper
+1.3.1|update readme and use gosu ro tun igv
+1.3.0|remove menu.xml, update to latest desktop image 1.4.0
+1.2.0|test ciao 5
+1.1.4|Adding system property user.home in java command
+1.1.3|Fix scratch permissions
+1.1.2|Update README
+1.1.1|Changed to CIAO 4
+1.1.0|Deleting novnc log messages
+1.0.12|Changed desktop version
+1.0.11|Fix workdir
+1.0.10|Changed file permissions in /scratch
+1.0.9|Executing igv as dbe user
+1.0.8|Changed HOME dir to /scratch
+1.0.7|Deleting DBE_INGESTION_INTERFACE variable
+1.0.6|Changed desktop version and deleted novnc logs
+1.0.5|Fixing errors with DBE variables
+1.0.4|Changed permissions in /scratch
+1.0.3|Fixing errors with command chown in /scratch
+1.0.2|Adding DBE variables
+1.0.1|Changed Desktop version and launch IGV with gosu command
+1.0.0|Changed desktop version
+0.0.6|Fixing tag version in compose file
+0.0.5|Changed -Xmx parameter in JVM configuration
+0.0.4|Changed configurations in igv.sh file and adding fullscreen in rc.xml
+0.0.3|Adding fullscreen mode
+0.0.2|Adding yml file
+0.0.1|Initial commit||
 
 !!Description
 The Integrative Genomics Viewer (IGV) is a high-performance visualization tool for interactive exploration of large, integrated genomic datasets. It supports a wide variety of data types, including array-based and next-generation sequence data, and genomic annotations.
 
 !!!Terminate the Workunit
 To finish the WU correctly, close the window or go to the bottom menu click on the Desktop icon -> click Logout. {img fileId="1263" imalign=center vspace="40" height="80%" width="80%"}
+
 ---
 !!Supported architectures
 *x86_64
+
 ---
 !!Input files
 IGV accepts the following file formats:
@@ -86,15 +123,59 @@ IGV accepts the following file formats:
 ^
 
 ---
-!!License
-[https://github.com/igvteam/igv/blob/master/license.txt |MIT License]
----
+!!Parameters
+||__Parameter__|__Description__|__Values__|__Default__
+Genome|Predefine the genome to load|<Defined by user>|hg19
+Position|Predefine the region to load|<Defined by user>|chr1:39553036-39553038
+Take screenshot|If set, IGV will take a screenshot of the region and exit (no interactive mode)|Active/Inactive|Inactive
+Preload data|If set, IGV will preload all VCF or BAM passed as input|Active/Inactive|Inactive
+||
 
+---
+!!-Example Workunit
+The example input files can be found in the [https://www.lab.databiology.net/dbe/userlab/show-project.html?projectId=81&tab=details|Project 81] under the workunit [https://www.lab.databiology.net/dbe/userlab/show-workunit.html?workunitId=10322&tab=details|BAM_Example_file_2].
+
+To run this example, we will use the following files:
+*[https://www.lab.databiology.net/dbe/userlab/show-resource.html?resourceId=6098633&tab=details|bam_example2.bam]
+
+---
+!!!Select the application
+Use the __Workunit__ / __Analyze__ option from the top menu to select the [https://www.lab.databiology.net/dbe/userlab/show-application.html?applicationId=224&tab=details|IGV] application, click on __Run__.
+
+---
+!!!Select the resources
+You can select one or more of the example resources adding to your ((Data basket)) or select them directly from the example project.  
+
+---
+!!!Configure the application
+#In the __Genome__ parameter select __hg19__.
+#In the __Position__ parameter select __chr1:39553036-39553038__.
+#In the __Take screenshot__ parameter select __Inactive__.
+#In the __Preload data__ parameter select __Inactive__.
+#Select your Storage and Submitter if needed.
+#Click on __Save__.
+
+---
+!!License
+MIT License
+
+---
 !!External link
 [http://software.broadinstitute.org/software/igv |Homepage]
----
-Go back to ((Analysis Applications|Analysis Applications)) or to the ((Home Page|Home Page))
- {HTML()}<!-- This is where Zendesk widget used to start -->
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="databiology.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
+
+
+-==-
+Go back to ((Analysis Applications)) or to the ((Home Page))
+
+{HTML()}<!-- This is where Zendesk widget used to start -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=fu
+nction(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation"
+,(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNod
+e.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.o
+pen();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="
+js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="data
+biology.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
 /*]]>*/</script>
 <!-- End of databiology Zendesk Widget script -->{HTML}
+
+::__Copyright ©2020. All Rights Reserved. Confidential Databiology Ltd.__::
